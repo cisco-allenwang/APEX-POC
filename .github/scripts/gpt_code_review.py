@@ -57,6 +57,6 @@ if __name__ == "__main__":
     file_path = sys.argv[1]
     repo_name = os.getenv("GITHUB_REPOSITORY")
     pr_number = int(os.getenv("PR_NUMBER"))
-    token = os.getenv("GITHUB_AUTO_TOKEN")
+    token = os.getenv("G_AUTO_TOKEN")
 
     main(file_path, repo_name, pr_number, token)

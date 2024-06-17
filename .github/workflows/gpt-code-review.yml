@@ -41,7 +41,7 @@ jobs:
       - name: Run Code Review
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          AUTO_TOKEN: ${{ secrets.AUTO_TOKEN }}
+          G_AUTO_TOKEN: ${{ secrets.G_AUTO_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
           PR_NUMBER: ${{ github.event.number }}
         run: |
