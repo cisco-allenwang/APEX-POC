@@ -51,6 +51,6 @@ jobs:
           for file in $(git diff --name-only $COMMIT_RANGE); do
             if [[ $file == *.cs || $file == *.razor ]]; then
               echo "Reviewing file: $file"
-              python .github/scripts/chatgpt_code_review.py $file
+              python .github/scripts/gpt_code_review.py $file
             fi
           done
