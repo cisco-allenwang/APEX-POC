@@ -51,12 +51,12 @@ def main(file_path, repo_name, pr_number, token):
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
-        print("Usage: python chatgpt_code_review.py <file_path>")
+        print("Usage: python gpt_code_review.py <file_path>")
         sys.exit(1)
 
     file_path = sys.argv[1]
     repo_name = os.getenv("GITHUB_REPOSITORY")
     pr_number = int(os.getenv("PR_NUMBER"))
-    token = os.getenv("GITHUB_AUTO_TOKEN")
+    token = os.getenv("G_AUTO_TOKEN")
 
     main(file_path, repo_name, pr_number, token)
