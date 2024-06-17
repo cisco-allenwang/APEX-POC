@@ -1,0 +1,29 @@
+name: .NET Core Tests
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 'net7.0'  # Adjust this to your .NET version
+
+    - name: Restore dependencies
+      run: dotnet restore
+
+    - name: Build and Test
+      run: |
+        dotnet build --configuration Release --no-restore
+        dotnet test --no-build --verbosity normal /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:CoverletOutput=./TestResults/coverage/
+
+    - name: Upload Test Results
+      uses: actions/upload-artifact@v2
+      with:
+        name: TestResults
+        path: TestResults

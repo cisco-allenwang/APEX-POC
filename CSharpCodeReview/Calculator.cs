@@ -1,5 +1,6 @@
 using System;
-
+namespace CSharpCodeReview
+{
 public class Calculator
 {
   
@@ -14,4 +15,6 @@ public class Calculator
         // Perform subtraction
         return a - b;
     }
+}
+
 }
