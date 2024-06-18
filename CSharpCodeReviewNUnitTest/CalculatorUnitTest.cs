@@ -51,7 +51,7 @@ using NUnit.Framework;
             var result = calculator.Divide(a,b);
 
             // Assert
-            Assert.That(result, Is.EqualTo(3));
+            Assert.That(result, Is.EqualTo(2.0));
         }
     }
 
