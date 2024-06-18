@@ -1,22 +1,22 @@
 using System;
 namespace CSharpCodeReview
 {
-public class Calculator
-{
-  
-    public int Add(int a, int b)
+    public class Calculator
     {
-        // Perform addition
-        return a + b;
-    }
 
-    public int Subtract(int a, int b)
-    {
-        // Perform subtraction
-        return a - b;
-    }
+        public int Add(int a, int b)
+        {
+            // Perform addition
+            return a + b;
+        }
 
-       public int Multiply(int a, int b)
+        public int Subtract(int a, int b)
+        {
+            // Perform subtraction
+            return a - b;
+        }
+
+        public int Multiply(int a, int b)
         {
             return a * b;
         }
@@ -30,7 +30,7 @@ public class Calculator
             return (double)a / b;
         }
 
-    
-}
+
+    }
 
 }
