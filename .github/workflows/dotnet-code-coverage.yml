@@ -33,8 +33,38 @@ jobs:
         dotnet tool install --global dotnet-reportgenerator-globaltool
         reportgenerator -reports:**/TestResults/**/*.xml -targetdir:coveragereport -reporttypes:Html
 
-    - name: Upload HTML coverage report
-      uses: actions/upload-artifact@v3
-      with:
-        name: code-coverage-html-report
-        path: coveragereport
+    # - name: Upload HTML coverage report
+    #   uses: actions/upload-artifact@v3
+    #   with:
+    #     name: code-coverage-html-report
+    #     path: coveragereport
+    - name: Deploy to GitHub Pages
+      run: |
+        git config --global user.name 'github-actions[bot]'
+        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+        git clone --single-branch --branch gh-pages https://github.com/${{ github.repository }} gh-pages
+        cp -r coveragereport/* gh-pages/
+        cd gh-pages
+        git add .
+        git commit -m 'Update code coverage report'
+        git push origin gh-pages
+    env:
+      GITHUB_TOKEN: ${{ secrets.G_AUTO_TOKEN }}
+
+    # - name: Create Pull Request Comment
+    #   if: github.event_name == 'pull_request'
+    #     uses: actions/github-script@v6
+    #     with:
+    #     script: |
+    #         const github = require('@actions/github');
+    #         const context = github.context;
+
+    #         const comment = `Code coverage report is available [here](https://${context.repo.owner}.github.io/${context.repo.repo})`;
+
+    #         github.rest.issues.createComment({
+    #         ...context.repo,
+    #         issue_number: context.issue.number,
+    #         body: comment
+    #         });
+    # env:
+    #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
