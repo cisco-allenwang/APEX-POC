@@ -1,29 +1,40 @@
-name: .NET Core Tests
+name: Code Coverage
 
-on: [push, pull_request]
+on:
+#   push:
+#     branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout repository
+      uses: actions/checkout@v3
 
-    - name: Setup .NET Core
-      uses: actions/setup-dotnet@v1
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: '7.0'  # Adjust this to your .NET version
+        dotnet-version: '7.x'
 
-    - name: Restore dependencies
+    - name: Install dependencies
       run: dotnet restore
 
-    - name: Build and Test
-      run: |
-        dotnet build --configuration Release --no-restore
-        dotnet test --configuration Release --no-build --verbosity normal /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:CoverletOutput=./TestResults/coverage/
+    - name: Build solution
+      run: dotnet build --configuration Release --no-restore
 
-    - name: Upload Test Results
-      uses: actions/upload-artifact@v2
+    - name: Run tests with coverage
+      run: dotnet test --configuration Release --no-build --collect:"XPlat Code Coverage"
+
+    - name: Generate HTML report
+      run: |
+        dotnet tool install --global dotnet-reportgenerator-globaltool
+        reportgenerator -reports:**/TestResults/**/*.xml -targetdir:coveragereport -reporttypes:Html
+
+    - name: Upload HTML coverage report
+      uses: actions/upload-artifact@v3
       with:
-        name: TestResults
-        path: TestResults
+        name: code-coverage-html-report
+        path: coveragereport
