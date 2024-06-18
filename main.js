@@ -222,9 +222,10 @@ var assemblies = [
     "name": "CSharpCodeReview",
     "classes": [
       { "name": "CSharpCodeReview.Calculator", "rp": "CSharpCodeReview_Calculator.html", "cl": 4, "ucl": 2, "cal": 6, "tl": 36, "cb": 1, "tb": 2, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "CSharpCodeReview.Pages.Calculator", "rp": "CSharpCodeReview_Calculator.2.html", "cl": 0, "ucl": 20, "cal": 20, "tl": 73, "cb": 0, "tb": 4, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
       { "name": "CSharpCodeReview.Pages.Counter", "rp": "CSharpCodeReview_Counter.html", "cl": 0, "ucl": 2, "cal": 2, "tl": 18, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
       { "name": "CSharpCodeReview.Pages.FetchData", "rp": "CSharpCodeReview_FetchData.html", "cl": 0, "ucl": 8, "cal": 8, "tl": 57, "cb": 0, "tb": 4, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
-      { "name": "CSharpCodeReview.Shared.NavMenu", "rp": "CSharpCodeReview_NavMenu.html", "cl": 0, "ucl": 4, "cal": 4, "tl": 39, "cb": 0, "tb": 2, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "CSharpCodeReview.Shared.NavMenu", "rp": "CSharpCodeReview_NavMenu.html", "cl": 0, "ucl": 4, "cal": 4, "tl": 44, "cb": 0, "tb": 2, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
       { "name": "CSharpCodeReview.Shared.SurveyPrompt", "rp": "CSharpCodeReview_SurveyPrompt.html", "cl": 0, "ucl": 1, "cal": 1, "tl": 16, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
       { "name": "HilhdaselloePR", "rp": "CSharpCodeReview_HilhdaselloePR.html", "cl": 6, "ucl": 3, "cal": 9, "tl": 32, "cb": 4, "tb": 4, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
       { "name": "Program", "rp": "CSharpCodeReview_Program.html", "cl": 0, "ucl": 5, "cal": 5, "tl": 11, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
@@ -241,6 +242,12 @@ var riskHotspotMetrics = [
 ];
 
 var riskHotspots = [
+  {
+    "assembly": "CSharpCodeReview", "class": "CSharpCodeReview.Pages.Calculator", "reportPath": "CSharpCodeReview_Calculator.2.html", "methodName": "BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)", "methodShortName": "BuildRenderTree(...)", "fileIndex": 0, "line": 21,
+    "metrics": [
+      { "value": 20, "exceeded": true },
+      { "value": 4, "exceeded": false },
+    ]},
   {
     "assembly": "CSharpCodeReview", "class": "CSharpCodeReview.Pages.FetchData", "reportPath": "CSharpCodeReview_FetchData.html", "methodName": "BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)", "methodShortName": "BuildRenderTree(...)", "fileIndex": 0, "line": 10,
     "metrics": [
