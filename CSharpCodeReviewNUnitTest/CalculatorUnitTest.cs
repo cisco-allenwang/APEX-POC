@@ -53,6 +53,22 @@ using NUnit.Framework;
             // Assert
             Assert.That(result, Is.EqualTo(2.0));
         }
+
+           [Test]
+        public void TestModulus()
+        {
+            // Arrange
+            var calculator = new Calculator();
+            int a = 10;
+            int b = 5;
+
+            // Act
+            var result = calculator.Modulus(a,b);
+
+            // Assert
+            Assert.That(result, Is.EqualTo(0));
+        }
     }
+    
 
     

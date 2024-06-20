@@ -30,6 +30,11 @@ namespace CSharpCodeReview
             return (double)a / b;
         }
 
+        public int Modulus(int a, int b)
+        {
+            return a%b;
+        }
+
 
     }
 
