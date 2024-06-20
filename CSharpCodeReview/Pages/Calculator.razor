@@ -1,0 +1,73 @@
+@page "/calculator"
+@using CSharpCodeReview
+
+<h3>Calculator</h3>
+
+<div>
+    <label for="firstNumber">First Number:</label>
+    <input type="number" id="firstNumber" @bind="firstNumber" />
+</div>
+<div>
+    <label for="secondNumber">Second Number:</label>
+    <input type="number" id="secondNumber" @bind="secondNumber" />
+</div>
+<div>
+    <button @onclick="Add">Add</button>
+    <button @onclick="Subtract">Subtract</button>
+    <button @onclick="Multiply">Multiply</button>
+    <button @onclick="Divide">Divide</button>
+</div>
+
+@if (result.HasValue)
+{
+    <div>
+        <p>Result: @result</p>
+    </div>
+}
+
+@if (!string.IsNullOrEmpty(errorMessage))
+{
+    <div>
+        <p class="text-danger">@errorMessage</p>
+    </div>
+}
+
+@code {
+    private int firstNumber;
+    private int secondNumber;
+    private double? result;
+    private string errorMessage;
+    private CSharpCodeReview.Calculator calculator = new CSharpCodeReview.Calculator();
+
+    private void Add()
+    {
+        result = calculator.Add(firstNumber, secondNumber);
+        errorMessage = null;
+    }
+
+    private void Subtract()
+    {
+        result = calculator.Subtract(firstNumber, secondNumber);
+        errorMessage = null;
+    }
+
+    private void Multiply()
+    {
+        result = calculator.Multiply(firstNumber, secondNumber);
+        errorMessage = null;
+    }
+
+    private void Divide()
+    {
+        try
+        {
+            result = calculator.Divide(firstNumber, secondNumber);
+            errorMessage = null;
+        }
+        catch (DivideByZeroException ex)
+        {
+            errorMessage = ex.Message;
+            result = null;
+        }
+    }
+}
