@@ -54,7 +54,7 @@ using NUnit.Framework;
             Assert.That(result, Is.EqualTo(2.0));
         }
 
-           [Test]
+        [Test]
         public void TestModulus()
         {
             // Arrange
