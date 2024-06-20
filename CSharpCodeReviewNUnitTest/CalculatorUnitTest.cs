@@ -55,7 +55,7 @@ using NUnit.Framework;
         }
 
         [Test]
-        public void TestModulus()
+        public void TestMod()
         {
             // Arrange
             var calculator = new Calculator();
