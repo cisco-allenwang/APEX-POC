@@ -68,6 +68,21 @@ using NUnit.Framework;
             // Assert
             Assert.That(result, Is.EqualTo(0));
         }
+
+           [Test]
+        public void TestPow()
+        {
+            // Arrange
+            var calculator = new Calculator();
+            int a = 2;
+            int b = 2;
+
+            // Act
+            var result = calculator.Pow(a,b);
+
+            // Assert
+            Assert.That(result, Is.EqualTo(4));
+        }
     }
     
 
