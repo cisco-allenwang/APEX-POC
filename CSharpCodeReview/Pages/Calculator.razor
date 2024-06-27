@@ -16,6 +16,7 @@
     <button @onclick="Subtract">Subtract</button>
     <button @onclick="Multiply">Multiply</button>
     <button @onclick="Divide">Divide</button>
+    <button @onclick="Mod">Modulus</button>
 </div>
 
 @if (result.HasValue)
@@ -70,4 +71,20 @@
             result = null;
         }
     }
+
+    private void Mod()
+    {
+        try
+        {
+            result = calculator.Divide(firstNumber, secondNumber);
+            errorMessage = null;
+        }
+        catch (DivideByZeroException ex)
+        {
+            errorMessage = ex.Message;
+            result = null;
+        }
+    }
+
+    
 }
