@@ -38,9 +38,14 @@ namespace CSharpCodeReview
             }
             return a%b;
         }
+        //add power function
+        public double Power(int a, int b)
+        {
+            return Math.Pow(a, b);
+        }
 
 
-//Add a new function for the Modulus
+
 
     }
 
