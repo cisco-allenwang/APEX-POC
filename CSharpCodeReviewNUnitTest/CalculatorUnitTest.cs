@@ -11,12 +11,12 @@ using NUnit.Framework;
         public void TestAdd()
         {
             // Arrange
-            var calculator = new Calculator();
+         
             int a = 10;
             int b = 5;
 
             // Act
-            int result = calculator.Add(a, b);
+            int result = Calculator.Instance.Add(a, b);
 
             // Assert
            Assert.That(result, Is.EqualTo(15));
@@ -27,12 +27,12 @@ using NUnit.Framework;
         public void TestSubtract()
         {
             // Arrange
-            var calculator = new Calculator();
+        
             int a = 10;
             int b = 5;
 
             // Act
-            int result = calculator.Subtract(a, b);
+            int result = Calculator.Instance.Subtract(a, b);
 
             // Assert
             Assert.That(result, Is.EqualTo(5));
@@ -43,12 +43,11 @@ using NUnit.Framework;
         public void TestDivide()
         {
             // Arrange
-            var calculator = new Calculator();
             int a = 10;
             int b = 5;
 
             // Act
-            var result = calculator.Divide(a,b);
+            var result = Calculator.Instance.Divide(a,b);
 
             // Assert
             Assert.That(result, Is.EqualTo(2.0));
@@ -58,12 +57,11 @@ using NUnit.Framework;
         public void TestMod()
         {
             // Arrange
-            var calculator = new Calculator();
             int a = 10;
             int b = 5;
 
             // Act
-            var result = calculator.Mod(a,b);
+            var result = Calculator.Instance.Mod(a,b);
 
             // Assert
             Assert.That(result, Is.EqualTo(0));
@@ -74,12 +72,11 @@ using NUnit.Framework;
         public void TestDivideByZero()
         {
             // Arrange
-            var calculator = new Calculator();
             int a = 10;
             int b = 0;
 
             // Act and Assert
-            Assert.That(() => calculator.Divide(a, b), Throws.TypeOf<DivideByZeroException>());
+            Assert.That(() => Calculator.Instance.Divide(a, b), Throws.TypeOf<DivideByZeroException>());
         }   
 
         // Test for Mod by zero
@@ -87,12 +84,11 @@ using NUnit.Framework;
         public void TestModByZero()
         {
             // Arrange
-            var calculator = new Calculator();
             int a = 10;
             int b = 0;
 
             // Act and Assert
-            Assert.That(() => calculator.Mod(a, b), Throws.TypeOf<DivideByZeroException>());
+            Assert.That(() => Calculator.Instance.Mod(a, b), Throws.TypeOf<DivideByZeroException>());
         }
 
         // Test for Multiply
@@ -100,12 +96,12 @@ using NUnit.Framework;
         public void TestMultiply()
         {
             // Arrange
-            var calculator = new Calculator();
+
             int a = 10;
             int b = 5;
 
             // Act
-            var result = calculator.Multiply(a,b);
+            var result = Calculator.Instance.Multiply(a,b);
 
             // Assert
             Assert.That(result, Is.EqualTo(50));
@@ -116,12 +112,12 @@ using NUnit.Framework;
         public void TestMultiplyByZero()
         {
             // Arrange
-            var calculator = new Calculator();
+
             int a = 10;
             int b = 0;
 
             // Act
-            var result = calculator.Multiply(a,b);
+            var result = Calculator.Instance.Multiply(a,b);
 
             // Assert
             Assert.That(result, Is.EqualTo(0));
@@ -132,12 +128,11 @@ using NUnit.Framework;
         public void TestPower()
         {
             // Arrange
-            var calculator = new Calculator();
             int a = 2;
             int b = 3;
 
             // Act
-            var result = calculator.Power(a,b);
+            var result = Calculator.Instance.Power(a,b);
 
             // Assert
             Assert.That(result, Is.EqualTo(8));
@@ -148,12 +143,11 @@ using NUnit.Framework;
         public void TestPowerByZero()
         {
             // Arrange
-            var calculator = new Calculator();
             int a = 0;
             int b = 0;
 
             // Act
-            var result = calculator.Power(a,b);
+            var result = Calculator.Instance.Power(a,b);
 
             // Assert
             Assert.That(result, Is.EqualTo(1));

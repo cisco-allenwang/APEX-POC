@@ -38,23 +38,22 @@
     private int secondNumber;
     private double? result;
     private string errorMessage;
-    private CSharpCodeReview.Calculator calculator = new CSharpCodeReview.Calculator();
 
     private void Add()
     {
-        result = calculator.Add(firstNumber, secondNumber);
+        result = CSharpCodeReview.Calculator.Instance.Add(firstNumber, secondNumber);
         errorMessage = null;
     }
 
     private void Subtract()
     {
-        result = calculator.Subtract(firstNumber, secondNumber);
+        result = CSharpCodeReview.Calculator.Instance.Subtract(firstNumber, secondNumber);
         errorMessage = null;
     }
 
     private void Multiply()
     {
-        result = calculator.Multiply(firstNumber, secondNumber);
+        result = CSharpCodeReview.Calculator.Instance.Multiply(firstNumber, secondNumber);
         errorMessage = null;
     }
 
@@ -62,7 +61,7 @@
     {
         try
         {
-            result = calculator.Divide(firstNumber, secondNumber);
+            result = CSharpCodeReview.Calculator.Instance.Divide(firstNumber, secondNumber);
             errorMessage = null;
         }
         catch (DivideByZeroException ex)
@@ -76,7 +75,7 @@
     {
         try
         {
-            result = calculator.Divide(firstNumber, secondNumber);
+            result = CSharpCodeReview.Calculator.Instance.Divide(firstNumber, secondNumber);
             errorMessage = null;
         }
         catch (DivideByZeroException ex)
