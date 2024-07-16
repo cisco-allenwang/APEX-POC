@@ -41,7 +41,7 @@ namespace CSharpCodeReview
         }
 
        //add power function
-       public double power(int a, int b)
+       public double Power(int a, int b)
        {
          return Math.Pow(a,b);
        }
