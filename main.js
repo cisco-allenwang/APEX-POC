@@ -221,8 +221,8 @@ var assemblies = [
   {
     "name": "CSharpCodeReview",
     "classes": [
-      { "name": "CSharpCodeReview.Calculator", "rp": "CSharpCodeReview_Calculator.html", "cl": 10, "ucl": 0, "cal": 10, "tl": 61, "cb": 4, "tb": 4, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
-      { "name": "CSharpCodeReview.Pages.Calculator", "rp": "CSharpCodeReview_Calculator.2.html", "cl": 0, "ucl": 28, "cal": 28, "tl": 90, "cb": 0, "tb": 4, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "CSharpCodeReview.Calculator", "rp": "CSharpCodeReview_Calculator.html", "cl": 15, "ucl": 0, "cal": 15, "tl": 72, "cb": 6, "tb": 6, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "CSharpCodeReview.Pages.Calculator", "rp": "CSharpCodeReview_Calculator.2.html", "cl": 0, "ucl": 27, "cal": 27, "tl": 89, "cb": 0, "tb": 4, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
       { "name": "CSharpCodeReview.Pages.Counter", "rp": "CSharpCodeReview_Counter.html", "cl": 0, "ucl": 2, "cal": 2, "tl": 18, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
       { "name": "CSharpCodeReview.Pages.FetchData", "rp": "CSharpCodeReview_FetchData.html", "cl": 0, "ucl": 8, "cal": 8, "tl": 57, "cb": 0, "tb": 4, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
       { "name": "CSharpCodeReview.Shared.NavMenu", "rp": "CSharpCodeReview_NavMenu.html", "cl": 0, "ucl": 4, "cal": 4, "tl": 44, "cb": 0, "tb": 2, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
