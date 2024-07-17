@@ -30,6 +30,11 @@ namespace CSharpCodeReview
             return (double)a / b;
         }
 
+        public double Pow(int a, int b)
+        {
+            return Math.Pow(a,b);
+        }
+
 
     }
 
