@@ -35,6 +35,12 @@ namespace CSharpCodeReview
             return Math.Pow(a,b);
         }
 
+        // Implementing a custom method for calculating Mod
+        public int Modulus(int a, int b)
+        {
+            return a % b;
+        }
+
 
     }
 
