@@ -34,7 +34,7 @@ jobs:
     - name: Check code coverage
       id: coverage
       run: |
-        coverage=$(grep -Po 'Line coverage:"\K[0-9.]*' ./coveragereport/index.html | head -1)
+        coverage=$(sed -n 's/.*Line coverage:"\([^"]*\)".*/\1/p' ./coveragereport/index.html | head -1)
         coverage=${coverage:-0}
         echo "Code coverage is $coverage"
         echo "::set-output name=coverage::$coverage"
