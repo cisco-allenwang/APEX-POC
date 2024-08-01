@@ -30,32 +30,6 @@ namespace CSharpCodeReview
             return (double)a / b;
         }
 
-        public double Pow(int a, int b)
-        {
-            return Math.Pow(a,b);
-        }
-
-        // Implementing a custom method for calculating Mod
-        public int Modulus(int a, int b)
-        {
-            return a % b;
-        }
-
-        // Implementing a custom method for calculating Factorial
-        public int Factorial(int n)
-        {
-            if (n < 0)
-            {
-                throw new ArgumentException("Factorial is not defined for negative numbers.");
-            }
-            int result = 1;
-            for (int i = 1; i <= n; i++)
-            {
-                result *= i;
-            }
-            return result;
-        }
-
 
     }
 
