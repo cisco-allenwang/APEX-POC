@@ -10,7 +10,7 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
@@ -22,6 +22,9 @@ jobs:
 
     - name: Run tests with coverage
       run: dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput=./TestResults/
+
+    - name: List directory structure
+      run: ls -R
 
     - name: Install ReportGenerator tool
       run: dotnet tool install --global dotnet-reportgenerator-globaltool
