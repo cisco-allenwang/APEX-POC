@@ -1,8 +1,8 @@
-name: Code Coverage Analysis
+name: Code Coverage Gating
 
 on:
   push:
-    branches: [main]
+    branches: [main, AllenPRDemo]
 
 jobs:
   code_coverage:
