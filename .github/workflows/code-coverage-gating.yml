@@ -1,0 +1,38 @@
+name: Code Coverage Analysis
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  code_coverage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.G_AUTO_TOKEN }}
+      
+      # Install .NET Core SDK and run tests
+      - name: Setup .NET environment
+        run: |
+          dotnet --version
+          dotnet tool install -g dotcover
+
+      - name: Run unit tests with coverage
+        run: |
+          dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutputPath=.coverage/
+
+      # Report code coverage results to GitHub Actions
+      - name: Upload Code Coverage report
+        uses: codecov/codecov-action@v2
+        env:
+          CODECOV_TOKEN: ${{ secrets.G_AUTO_TOKEN  }}
+      
+      # Check if minimum code coverage threshold is met
+      - name: Check code coverage
+        run: |
+          COVERAGE=$(dotcover summary | grep "Total" | awk '{print $3}')
+          if (( $(echo "$COVERAGE < 90" | bc) )); then
+            echo "Code coverage too low. Aborting push."
+            exit 1
+          fi
