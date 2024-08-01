@@ -15,7 +15,7 @@ jobs:
       # Install .NET Core SDK and run tests
       - name: Setup .NET environment
         run: |
-          dotnet --version
+          dotnet '7.x'
           dotnet tool install -g dotcover
 
       - name: Run unit tests with coverage
