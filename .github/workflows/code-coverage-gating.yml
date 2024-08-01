@@ -18,7 +18,7 @@ jobs:
     - name: Parse Line Coverage
       id: coverage
       run: |
-        line_coverage=$(grep -oP 'Line Coverage:\s*\K\d+\.\d+' coverage.html)
+        line_coverage=$(grep -oP 'Line Coverage:\s*\K\d+\.\d+' index.html)
         echo "Line Coverage is $line_coverage%"
         echo "::set-output name=line_coverage::$line_coverage"
 
