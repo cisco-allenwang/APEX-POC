@@ -2,7 +2,7 @@ name: Code Coverage Gating
 
 on:
   push:
-    branches: [main, AllenPRDemo]
+    branches: [main, "AllenPRDemo"]
 
 jobs:
   code_coverage:
