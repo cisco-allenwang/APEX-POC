@@ -20,23 +20,21 @@ jobs:
     - name: Install dependencies
       run: dotnet restore
 
-    - name: Build solution
-      run: dotnet build --configuration Release --no-restore
-
     - name: Run tests with coverage
-      run: dotnet test --configuration Release --no-build --collect:"XPlat Code Coverage"
+      run: dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput=./TestResults/
 
-    - name: Generate HTML report
-      run: |
-        dotnet tool install --global dotnet-reportgenerator-globaltool
-        reportgenerator -reports:**/TestResults/**/*.xml -targetdir:coveragereport -reporttypes:Html
+    - name: Install ReportGenerator tool
+      run: dotnet tool install --global dotnet-reportgenerator-globaltool
+
+    - name: Generate coverage report
+      run: reportgenerator -reports:./TestResults/coverage.cobertura.xml -targetdir:./coverage -reporttypes:Html
 
     - name: Check code coverage
       id: coverage
       run: |
-        coverage=$(sed -n 's/.*Line coverage:"\([^"]*\)".*/\1/p' ./coveragereport/index.html | head -1)
-        coverage=${coverage:-0}
-        echo "Code coverage is $coverage"
+        coverage=$(grep -Po 'line-rate="\K[0-9.]*' ./coverage/coverage.cobertura.xml | head -1)
+        coverage=$(echo "$coverage * 100" | bc)
+        echo "Code coverage is $coverage%"
         echo "::set-output name=coverage::$coverage"
     
     - name: Enforce code coverage
