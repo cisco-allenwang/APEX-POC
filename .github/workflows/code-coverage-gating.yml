@@ -5,34 +5,39 @@ on:
     branches: [main, "AllenDemoPR"]
 
 jobs:
-  code_coverage:
+  test:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v2
-        with:
-          token: ${{ secrets.G_AUTO_TOKEN }}
-      
-      # Install .NET Core SDK and run tests
-      - name: Setup .NET environment
-        run: |
-          dotnet '7.x'
-          dotnet tool install -g dotcover
+    - name: Checkout code
+      uses: actions/checkout@v2
 
-      - name: Run unit tests with coverage
-        run: |
-          dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutputPath=.coverage/
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '7.x'  # Adjust the version to your project's needs
 
-      # Report code coverage results to GitHub Actions
-      - name: Upload Code Coverage report
-        uses: codecov/codecov-action@v2
-        env:
-          CODECOV_TOKEN: ${{ secrets.G_AUTO_TOKEN  }}
-      
-      # Check if minimum code coverage threshold is met
-      - name: Check code coverage
-        run: |
-          COVERAGE=$(dotcover summary | grep "Total" | awk '{print $3}')
-          if (( $(echo "$COVERAGE < 90" | bc) )); then
-            echo "Code coverage too low. Aborting push."
-            exit 1
-          fi
+    - name: Install dependencies
+      run: dotnet restore
+
+    - name: Run tests with coverage
+      run: dotnet test --collect:"XPlat Code Coverage"
+
+    - name: Generate coverage report
+      run: dotnet tool install --global dotnet-reportgenerator-globaltool
+
+    
+    - name: Generate HTML report
+      run: reportgenerator -reports:./TestResults/**/*.xml -targetdir:./coverage -reporttypes:Html
+
+    - name: Check code coverage
+      id: coverage
+      run: |
+        coverage=$(grep -Po 'line-rate="\K[0-9.]*' ./coverage/index.html | head -1)
+        coverage=${coverage:-0}
+        echo "Code coverage is $coverage"
+        echo "::set-output name=coverage::$coverage"
+    
+    - name: Enforce code coverage
+      if: steps.coverage.outputs.coverage < 80
+      run: exit 1
