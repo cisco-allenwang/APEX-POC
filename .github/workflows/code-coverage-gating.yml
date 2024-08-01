@@ -32,7 +32,7 @@ jobs:
     - name: Check code coverage
       id: coverage
       run: |
-        coverage=$(grep -Po 'line-rate="\K[0-9.]*' ./coverage/coverage.cobertura.xml | head -1)
+        coverage=$(grep -Po 'line-rate="\K[0-9.]*' ./TestResults//coverage/coverage.cobertura.xml | head -1)
         coverage=$(echo "$coverage * 100" | bc)
         echo "Code coverage is $coverage%"
         echo "::set-output name=coverage::$coverage"
