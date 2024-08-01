@@ -25,10 +25,11 @@ jobs:
 
     - name: Run tests with coverage
       run: dotnet test --configuration Release --no-build --collect:"XPlat Code Coverage"
-      
+
     - name: Generate HTML report
-      run: dotnet tool install --global dotnet-reportgenerator-globaltool
-           reportgenerator -reports:**/TestResults/**/*.xml -targetdir:coveragereport -reporttypes:Html
+      run: |
+        dotnet tool install --global dotnet-reportgenerator-globaltool
+        reportgenerator -reports:**/TestResults/**/*.xml -targetdir:coveragereport -reporttypes:Html
 
     - name: Check code coverage
       id: coverage
