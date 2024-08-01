@@ -10,7 +10,7 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
@@ -20,15 +20,15 @@ jobs:
     - name: Install dependencies
       run: dotnet restore
 
+    - name: Build solution
+      run: dotnet build --configuration Release --no-restore
+
     - name: Run tests with coverage
-      run: dotnet test --collect:"XPlat Code Coverage"
-
-    - name: Generate coverage report
-      run: dotnet tool install --global dotnet-reportgenerator-globaltool
-
-    
+      run: dotnet test --configuration Release --no-build --collect:"XPlat Code Coverage"
+      
     - name: Generate HTML report
-      run: reportgenerator -reports:./TestResults/**/*.xml -targetdir:./coverage -reporttypes:Html
+      run: dotnet tool install --global dotnet-reportgenerator-globaltool
+           reportgenerator -reports:**/TestResults/**/*.xml -targetdir:coveragereport -reporttypes:Html
 
     - name: Check code coverage
       id: coverage
