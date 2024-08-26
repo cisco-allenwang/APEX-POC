@@ -36,6 +36,12 @@ namespace CSharpCodeReview
             return a % b;
         }
 
+        //Create a Square  Root function
+        public double SquareRoot(int a)
+        {
+            return Math.Sqrt(a);
+        }
+        
 
     }
 
