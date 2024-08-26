@@ -30,6 +30,12 @@ namespace CSharpCodeReview
             return (double)a / b;
         }
 
+        //create Mod function
+        public int Mod(int a, int b)
+        {
+            return a % b;
+        }
+
 
     }
 
