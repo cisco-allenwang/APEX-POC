@@ -30,7 +30,6 @@ namespace CSharpCodeReview
             return (double)a / b;
         }
 
-
     }
 
 }

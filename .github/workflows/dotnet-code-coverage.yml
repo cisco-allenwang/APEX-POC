@@ -5,7 +5,9 @@ on:
 #     branches: [ main ]
   pull_request:
     branches: [ main ]
-
+permissions:
+  id-token: write  # Ensure the id-token permission is set to write
+  contents: read   # Default permission for reading repository contents
 jobs:
   build:
     runs-on: ubuntu-latest
