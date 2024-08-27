@@ -10,12 +10,12 @@ public class YourClassTests
 {
     
 
-     private HilhdaselloePR _yourClass;
+     private HelloWorld _yourClass;
 
         [SetUp]
         public void Setup()
         {
-            _yourClass = new HilhdaselloePR();
+            _yourClass = new HelloWorld();
         }
 
         [Test]
