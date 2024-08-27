@@ -1,4 +1,4 @@
-public class HilhdaselloePR
+public class HelloWorld
     {
         public string Greet(string name)
         {
