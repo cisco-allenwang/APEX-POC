@@ -227,7 +227,7 @@ var assemblies = [
       { "name": "CSharpCodeReview.Pages.FetchData", "rp": "CSharpCodeReview_FetchData.html", "cl": 0, "ucl": 8, "cal": 8, "tl": 57, "cb": 0, "tb": 4, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
       { "name": "CSharpCodeReview.Shared.NavMenu", "rp": "CSharpCodeReview_NavMenu.html", "cl": 0, "ucl": 4, "cal": 4, "tl": 44, "cb": 0, "tb": 2, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
       { "name": "CSharpCodeReview.Shared.SurveyPrompt", "rp": "CSharpCodeReview_SurveyPrompt.html", "cl": 0, "ucl": 1, "cal": 1, "tl": 16, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
-      { "name": "HilhdaselloePR", "rp": "CSharpCodeReview_HilhdaselloePR.html", "cl": 6, "ucl": 3, "cal": 9, "tl": 32, "cb": 4, "tb": 4, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "HelloWorld", "rp": "CSharpCodeReview_HelloWorld.html", "cl": 6, "ucl": 3, "cal": 9, "tl": 32, "cb": 4, "tb": 4, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
       { "name": "Program", "rp": "CSharpCodeReview_Program.html", "cl": 0, "ucl": 5, "cal": 5, "tl": 11, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
     ]},
 ];
