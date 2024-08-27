@@ -6,7 +6,7 @@ from github import Github
 # Set up your custom API details
 API_URL =  os.getenv("BRIDGEIT_URL") #'https://chat-ai.cisco.com/openai/deployments/gpt-4o-mini/chat/completions'
 API_KEY = os.getenv("BRIDGEIT_API_ACCESS_TOKEN")  # Replace with your custom API key
-APP_KEY = os.getenv("BRIDGE_APP_KEY")  # Replace with your app key if needed
+APP_KEY = os.getenv("BRIDGEIT_APP_KEY")  # Replace with your app key if needed
 
 def read_file(file_path):
     """Read the content of a file."""
@@ -61,7 +61,7 @@ def main(file_path, repo_name, pr_number, token):
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
-        print("Usage: python gpt_code_review.py <file_path>")
+        print("Usage: python bridgeit_code_review.py <file_path>")
         sys.exit(1)
 
     file_path = sys.argv[1]
