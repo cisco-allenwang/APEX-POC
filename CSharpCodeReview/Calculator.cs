@@ -42,6 +42,12 @@ namespace CSharpCodeReview
             return Math.Sqrt(a);
         }
 
+        public double SquareRoot(double a)
+        {
+            return Math.Sqrt(a);
+        }
+
+
         //add power function
         public int Power(int a, int b)
         {

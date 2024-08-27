@@ -23,7 +23,7 @@ def review_code(file_path, code_content):
         headers = {
             'Content-Type': 'application/json',
             'Accept': 'application/json',
-            'api-key': 'egai-prd-opex-tcoe-bridgeit-code-review-process-1'
+            'api-key': API_KEY
         }
         data = {
             "messages": [

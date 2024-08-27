@@ -39,8 +39,10 @@ jobs:
           git log --oneline -n 20  # Log more commits to ensure the commits exist
 
       - name: Run Code Review
-        env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        env:      
+          BRIDGEIT_URL: ${{ secrets.BRIDGEIT_URL }}
+          BRIDGEIT_API_ACCESS_TOKEN: ${{ secrets.BRIDGEIT_API_ACCESS_TOKEN }}
+          BRIDGEIT_APP_KEY: ${{ secrets.BRIDGEIT_APP_KEY }}
           G_AUTO_TOKEN: ${{ secrets.G_AUTO_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
           PR_NUMBER: ${{ github.event.number }}
