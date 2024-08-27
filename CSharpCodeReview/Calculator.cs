@@ -30,36 +30,6 @@ namespace CSharpCodeReview
             return (double)a / b;
         }
 
-        //create Mod function
-        public int Mod(int a, int b)
-        {
-            return a % b;
-        }
-
-        //Create a Square  Root function
-        public double SquareRoot(int a)
-        {
-            return Math.Sqrt(a);
-        }
-
-        public double SquareRoot(double a)
-        {
-            return Math.Sqrt(a);
-        }
-
-
-        //add power function
-        public int Power(int a, int b)
-        {
-            return (int)Math.Pow(a, b);
-        }  
-
-        public double Power(double a, double b)
-        {
-            return Math.Pow(a, b);
-        }  
-
-
     }
 
 }
