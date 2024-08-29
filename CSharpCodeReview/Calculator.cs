@@ -29,6 +29,13 @@ namespace CSharpCodeReview
             }
             return (double)a / b;
         }
+
+        //add power function
+        public int Power(int a, int b)
+        {
+            return (int)Math.Pow(a, b);
+        }
+        
     }
 
 }
