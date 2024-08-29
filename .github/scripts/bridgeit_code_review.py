@@ -4,9 +4,9 @@ import sys
 from github import Github
 
 # Set up your custom API details
-API_URL =  os.getenv("BRIDGEIT_URL") #'https://chat-ai.cisco.com/openai/deployments/gpt-4o-mini/chat/completions'
-API_KEY = os.getenv("BRIDGEIT_API_ACCESS_TOKEN")  # Replace with your custom API key
-APP_KEY = os.getenv("BRIDGEIT_APP_KEY")  # Replace with your app key if needed
+API_URL = os.getenv("BRIDGEIT_URL")
+API_KEY = os.getenv("BRIDGEIT_API_ACCESS_TOKEN")
+APP_KEY = os.getenv("BRIDGEIT_APP_KEY")
 
 def read_file(file_path):
     """Read the content of a file."""
@@ -17,7 +17,16 @@ def read_file(file_path):
         print(f"Error reading file {file_path}: {e}")
         return None
 
-def review_code(file_path, code_content):
+def load_prompt_template(template_path):
+    """Load the prompt template from a file."""
+    try:
+        with open(template_path, "r") as file:
+            return file.read()
+    except Exception as e:
+        print(f"Error reading prompt template {template_path}: {e}")
+        return None
+
+def review_code(file_path, code_content, prompt_template):
     """Use Cisco BridgeIT API to review code."""
     try:
         headers = {
@@ -25,27 +34,7 @@ def review_code(file_path, code_content):
             'Accept': 'application/json',
             'api-key': API_KEY
         }
-        prompt_content = f"""
-        Please review the following C# code changes that have been pushed to the GitHub branch. Focus on identifying potential issues related to code quality, performance, security, and adherence to best practices. Provide suggestions for improvement where necessary, and highlight any areas that might benefit from refactoring. Additionally, please check for any potential bugs or logical errors in the code.
-
-        Code Changes:
-        {code_content}
-
-        Context:
-        - **Purpose of the Code**: This code is part of a simple calculator application developed using Blazor WebAssembly. The main goal of this code is to implement the basic arithmetic operations (addition, subtraction, multiplication, division) and ensure the UI correctly reflects the results.
-
-        - **Specific Requirements**: The application must perform calculations with precision up to two decimal places and handle edge cases such as division by zero gracefully, displaying appropriate error messages to the user.
-
-        - **Performance Considerations**: The code needs to be optimized for performance since the application will be running in a WebAssembly environment. This includes minimizing unnecessary state updates and ensuring that the UI remains responsive during calculations.
-
-        - **User Interface Considerations**: The UI should be simple and user-friendly, with clear buttons and input fields. Any suggestions for improving the user experience, especially in terms of input handling and result display, would be appreciated.
-
-        - **Security Considerations**: While this is a basic calculator, it's important to ensure that the code is secure, particularly in handling user inputs. Please review the input validation logic to prevent any potential vulnerabilities.
-
-        - **Scalability**: Though currently a simple calculator, the code should be modular and scalable to allow for future expansion of features, such as adding more complex mathematical operations or integrating with other parts of the application.
-
-        Please include an overview of the code's strengths and weaknesses, as well as actionable recommendations for the team.
-        """
+        prompt_content = prompt_template.format(code_content=code_content)
 
         data = {
             "messages": [
@@ -72,14 +61,16 @@ def post_review_comment(repo_name, pr_number, review, token):
     except Exception as e:
         print(f"Error posting review comment: {e}")
 
-def main(file_path, repo_name, pr_number, token):
+def main(file_path, repo_name, pr_number, token, prompt_template_path):
     print(f"Reviewing {file_path}...")
     code_content = read_file(file_path)
     if code_content:
-        review = review_code(file_path, code_content)
-        if review:
-            print(f"Review for {file_path}:\n{review}\n")
-            post_review_comment(repo_name, pr_number, review, token)
+        prompt_template = load_prompt_template(prompt_template_path)
+        if prompt_template:
+            review = review_code(file_path, code_content, prompt_template)
+            if review:
+                print(f"Review for {file_path}:\n{review}\n")
+                post_review_comment(repo_name, pr_number, review, token)
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
@@ -90,5 +81,6 @@ if __name__ == "__main__":
     repo_name = os.getenv("GITHUB_REPOSITORY")
     pr_number = int(os.getenv("PR_NUMBER"))
     token = os.getenv("G_AUTO_TOKEN")
+    prompt_template_path = ".github/scripts/prompt_csharp_template.txt"  # Path to the prompt template file
 
-    main(file_path, repo_name, pr_number, token)
+    main(file_path, repo_name, pr_number, token, prompt_template_path)
